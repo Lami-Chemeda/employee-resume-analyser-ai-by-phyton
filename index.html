@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .welcome-message {
+            text-align: center;
+            font-size: 35px;
+            font-weight: bold;
+            margin-bottom:10px;
+            background-color: #06fa5f; /* Welcome message background */
+            color: #fc0909;           /* Welcome message text color */
+            padding: 20px;
+            border: 12px solid #2707f7;
+            border-radius: 12px;
+        }
+
+        h1.upload-title {
+            text-align: center;
+            background-color: #e2fb05; /* Upload title background */
+            color: #1708f0; 
+            font-size: 35px;          /* Upload title text color */
+            padding: 50px;
+            gap: 15px;
+            border: 12px solid #f70707;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            font-size: 35px;
+            gap: 15px;
+            padding: 20px;
+            border: 12px solid #07f787;
+            border-radius: 12px;
+            background-color: #fa0606;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            font-size: 18px;          /* Increased text size */
+            color: #0bf532;           /* File input text color */
+            background-color: #0909f6;/* File input background (green) */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 35px;
+        }
+
+        input[type="file"]:hover {
+            background-color: #218838;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            font-size: 35px;
+            border-radius: 6px;
+            background-color: #007BFF;
+            color: rgb(7, 250, 116);
+            font-size: 35px;          /* Increased text size */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            display: inline-block;
+            min-width: 160px;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                padding: 15px;
+            }
+
+            strong {
+                min-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-message">
+            Welcome to Employee Resume Analyzer AI developed by Group 2
+        </div>
+
+        <h1 class="upload-title">Upload Resume PDF</h1>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="resume" accept=".pdf" required>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if info %}
+            <h2>Resume Analysis Result:</h2>
+            <ul>
+                <li><strong>Name:</strong> {{ info['Name'] }}</li>
+                <li><strong>Age:</strong> {{ info['Age'] }}</li>
+                <li><strong>Sex:</strong> {{ info['Sex'] }}</li>
+                <li><strong>CGPA:</strong> {{ info['CGPA'] }}</li>
+                <li><strong>Email:</strong> {{ info['Email'] }}</li>
+                <li><strong>Phone:</strong> {{ info['Phone'] }}</li>
+                <li><strong>Skills:</strong> {{ info['Skills'] }}</li>
+                <li><strong>Education:</strong> {{ info['Education'] }}</li>
+                <li><strong>Experience (years):</strong> {{ info['Experience (years)'] }}</li>
+                <li><strong>Languages:</strong> {{ info['Languages'] }}</li>
+                
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
